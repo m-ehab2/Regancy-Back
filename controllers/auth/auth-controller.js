@@ -115,7 +115,7 @@ const loginUser = async (req, res) => {
         email: checkUser.email,
         userName: checkUser.userName,
       },
-      process.env.SIGNTURE,
+     "s,dmjcbkdhbscjh",
       // { expiresIn: "60m" }
     );
 
@@ -167,7 +167,7 @@ const authMiddleware = async (req, res, next) => {
 
     //decoded Data
 
-    const decoded = jwt.verify(token,process.env.SIGNTURE)
+    const decoded = jwt.verify(token,"s,dmjcbkdhbscjh")
  
     
     if(!decoded)res.status(401).json({
