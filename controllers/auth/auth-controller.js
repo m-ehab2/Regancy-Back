@@ -43,7 +43,7 @@ const registerUser = async (req, res) => {
       to: email,
       subject: "email verification",
       message: `<h2>please clich on this link to verify your email</h2>
-              <a href="${req.protocol}://${req.headers.host}/api/auth/verify-email?token=${userToken}">Verify Email</a>
+              <a href="https://shared-appolonia-regency-9272e2bf.koyeb.app/api/auth/verify-email?token=${userToken}">Verify Email</a>
           `,
     });
     // console.log(isEmailSend);

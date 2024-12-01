@@ -17,7 +17,7 @@ router.post("/register" ,registerUser);
 router.get("/verify-email", verifyEmail);
 router.post("/reVerify", reSendverify);
 
-router.post("/login", validationMiddleware(signinSchema),loginUser);
+router.post("/login",loginUser);
 router.post("/logout", logoutUser);
 router.get("/check-auth", authMiddleware, (req, res) => {
   const user = req.user;
