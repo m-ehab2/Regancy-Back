@@ -37,7 +37,7 @@ const registerUser = async (req, res) => {
     //genrate token to verify email
 
     const userToken =  jwt.sign({ email }, "sdhcbjdhs");
-console.log(userToken);
+
 
     const isEmailSend = await sendEmailServices({
       to: email,
@@ -46,9 +46,7 @@ console.log(userToken);
               <a href="${req.protocol}://${req.headers.host}/api/auth/verify-email?token=${userToken}">Verify Email</a>
           `,
     });
-    console.log(isEmailSend);
-    
-
+    // console.log(isEmailSend);
     if (!isEmailSend)
       return res.json({
         success: false,
