@@ -14,7 +14,7 @@ const sendEmailServices = async(
     //email configration
 
     const transporter= nodemailer.createTransport({
-        host:"localhost",
+        host:"ko",
         service:"gmail",
         port:465,
         auth:{
