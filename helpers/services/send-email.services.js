@@ -14,7 +14,7 @@ const sendEmailServices = async(
     //email configration
 
     const transporter= nodemailer.createTransport({
-        host:"https://shared-appolonia-regency-9272e2bf.koyeb.app",
+        host:"https://app.koyeb.com/services/434d7f20-3120-45dd-9218-f8546bd30fa2",
         service:"gmail",
         port:465,
         auth:{

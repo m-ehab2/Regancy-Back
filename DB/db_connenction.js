@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
   const db_connection = async ()=>{
 
-    await mongoose.connect(process.env.CONNECTION_URL_HOST)
+    await mongoose.connect("mongodb+srv://regency:regency109@cluster0.vxyflva.mongodb.net/regency")
     .then((res)=>(console.log('db connented success ....')))
     .catch((error)=>(console.log('db connected failed',error)))
     
