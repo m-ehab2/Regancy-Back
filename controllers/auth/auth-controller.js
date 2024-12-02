@@ -36,23 +36,23 @@ const registerUser = async (req, res) => {
 
     //genrate token to verify email
 
-//     const userToken =  jwt.sign({ email }, "sdhcbjdhs");
+    const userToken =  jwt.sign({ email }, "sdhcbjdhs");
 
-// console.log(userToken);
+console.log(userToken);
 
-//     const isEmailSend = await sendEmailServices({
-//       to: email,
-//       subject: "email verification",
-//       message: `<h2>please clich on this link to verify your email</h2>
-//               <a href="https://shared-appolonia-regency-9272e2bf.koyeb.app/api/auth/verify-email?token=${userToken}">Verify Email</a>
-//           `,
-//     });
-//     console.log(isEmailSend);
-//     if (!isEmailSend)
-//       return res.json({
-//         success: false,
-//         message: "Email is not sent , please try again later",
-//       });
+    const isEmailSend = await sendEmailServices({
+      to: email,
+      subject: "email verification",
+      message: `<h2>please clich on this link to verify your email</h2>
+              <a href="https://shared-appolonia-regency-9272e2bf.koyeb.app/api/auth/verify-email?token=${userToken}">Verify Email</a>
+          `,
+    });
+    console.log(isEmailSend);
+    if (!isEmailSend)
+      return res.json({
+        success: false,
+        message: "Email is not sent , please try again later",
+      });
 
     //HASH PASSSWORD==>
 
@@ -78,6 +78,7 @@ const registerUser = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Some error occured ",
+      error:e.errmsg
     });
   }
 };
@@ -94,7 +95,7 @@ const loginUser = async (req, res) => {
         message: "User doesn't exists! Please register first ",
       });
 
-      //check virefy ===>
+      // check virefy ===>
     const checkUserVerify = await User.findOne({email, isEmailVerified:true });
     if (!checkUserVerify)
       return res.json({

@@ -14,7 +14,7 @@ const sendEmailServices = async(
     //email configration
 
     const transporter= nodemailer.createTransport({
-        host:"https://app.koyeb.com/services/434d7f20-3120-45dd-9218-f8546bd30fa2",
+        host:"https://app.koyeb.com",
         service:"gmail",
         port:465,
         auth:{
@@ -30,6 +30,8 @@ const sendEmailServices = async(
         html: message, 
         attachments
     })
+    console.log(info);
+    
     return info.accepted.length ? true : false
 } 
 module.exports = sendEmailServices
