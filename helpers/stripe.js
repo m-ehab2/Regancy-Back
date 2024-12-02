@@ -12,7 +12,7 @@ const createChickoutSession =async (
     }
 )=>{
     // const {confirm} = useCustomCheckout();
-const session = new Stripe(process.env.STRIPE_SECRET_KEY)
+const session = new Stripe("sk_test_51Oy17F2Lmqh9OD3Z3TpsM5iUNoToLhFYfZYR9V1ZiOGWrkHy82BkJuLHrcEM8SBfFZcJ4OOtEq0kMNeGOUf9jz4p00pM8awjOu")
 
 const paymentData= await session.checkout.sessions.create(
     {
@@ -21,8 +21,8 @@ const paymentData= await session.checkout.sessions.create(
         customer_email,
         metadata,
         
-        success_url:process.env.SUCCESS_URL,
-        cancel_url:process.env.CANCEL_URL,
+        success_url:"http://localhost:5173/shop/stripe-success",
+        cancel_url:"http://localhost:5000/shop//shop/stripe-cancel",
         
         discounts,
         line_items
