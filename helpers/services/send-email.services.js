@@ -18,13 +18,13 @@ const sendEmailServices = async(
         service:"gmail",
         port:465,
         auth:{
-            user:process.env.EMAIL,
-            pass:process.env.EMAIL_PASSWORD
+            user:"m7amedezz1122@gmail.com",
+            pass:"rhxdlgdawmfaepve"
         }
     })
 
     const info=await transporter.sendMail({
-        from: `"Fred Foo 👻" <${process.env.EMAIL}>`, 
+        from: `"Fred Foo 👻" <m7amedezz1122@gmail.com>`, 
         to, 
         subject, 
         html: message, 
