@@ -51,7 +51,7 @@ console.log(userToken);
     if (!isEmailSend)
       return res.json({
         success: false,
-        message: "Email is not sent , please try again later",
+        message: "Email is not sent , please try again later,or check if your email success",
       });
 
     //HASH PASSSWORD==>
@@ -120,13 +120,16 @@ const loginUser = async (req, res) => {
      "s,dmjcbkdhbscjh",
       // { expiresIn: "60m" }
     );
+    console.log(token);
+    
 
     //chenge user status
     const updateUserstatus = await User.findOneAndUpdate({ email, isLoggedIn:false },{isLoggedIn:true});
 
-    res.cookie("token", token, { httpOnly: true, secure: false }).json({
+   return res.cookie("token", token, { httpOnly: true, secure: false }).json({
       success: true,
       message: "Logged in successfully",
+      
       user: {
         email: checkUser.email,
         role: checkUser.role,
@@ -157,6 +160,8 @@ const logoutUser = async(req, res) => {
 //auth middleware
 const authMiddleware = async (req, res, next) => {
   try {
+    console.log(req.headers.cookie);
+    
   const {token} = req.cookies;
   console.log( req.cookies);
   console.log( token);
