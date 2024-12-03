@@ -126,7 +126,7 @@ const loginUser = async (req, res) => {
     //chenge user status
     const updateUserstatus = await User.findOneAndUpdate({ email, isLoggedIn:false },{isLoggedIn:true});
 
-   return res.cookie("token", token, { httpOnly: true, secure: false }).json({
+   return res.cookie("token", token, {  secure: true }).json({
       success: true,
       message: "Logged in successfully",
       
