@@ -18,20 +18,19 @@ const { config } = require("dotenv");
 const { db_connection } = require("./DB/db_connenction");
 const router = require("./routes/test");
 const passport = require("passport");
-const googleAuth = require("./googleAuth")
+const googleAuth = require("./googleAuth");
 
-config()
+config();
 //create a database connection -> u can also
 //create a separate file for this and then import/use that file here
-db_connection()
-
+db_connection();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 // app.use(cors())
 app.use(
   cors({
-    origin: "*",
+    origin: ["http://localhost:5173", "https://regancy.vercel.app/"], // Replace with your frontend origins
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
@@ -40,15 +39,15 @@ app.use(
       "Expires",
       "Pragma",
     ],
-    credentials: true,
+    credentials: true, // Allow cookies or authorization headers
   })
 );
 
 app.use(cookieParser());
 app.use(express.json());
-app.use(passport.initialize())
+app.use(passport.initialize());
 // app.use(passport.session())
-app.use('/',router)
+app.use("/", router);
 app.use("/api/auth", authRouter);
 
 app.use("/api/admin/products", adminProductsRouter);
@@ -62,6 +61,5 @@ app.use("/api/shop/search", shopSearchRouter);
 app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
-
 
 app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
