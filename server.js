@@ -30,7 +30,13 @@ const PORT = process.env.PORT || 3000;
 // app.use(cors())
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://regancy.vercel.app/"], // Replace with your frontend origins
+    origin: [
+      "http://localhost:5173",
+      "https://regancy.vercel.app",
+      "https://regancy-front.vercel.app",
+      "https://regancy-front-git-main-m-ehab2s-projects.vercel.app",
+      "https://regancy-front-dx01nc18z-m-ehab2s-projects.vercel.app",
+    ], // Replace with your frontend origins
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
